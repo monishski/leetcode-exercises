@@ -1,4 +1,3 @@
-// Definition for a binary tree node.
 class TreeNode {
   val: number
   left: TreeNode | null
@@ -10,7 +9,7 @@ class TreeNode {
   }
 }
 
-function minDiffInBST(root: TreeNode | null): number { //same as q#530
+function minDiffInBST(root: TreeNode | null): number { //Same as q#530
   let min = Number.POSITIVE_INFINITY
   let prevNode: TreeNode | null = null
     
