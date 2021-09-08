@@ -7,13 +7,11 @@ class ListNode {
   }
 }
 
-function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+function _addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
   
   let remainder = false
-  
   let l = new ListNode() //for iterative
   let root = l //for return
-  
   while (l1 || l2) {
     
     // Append to the shorter list
@@ -50,6 +48,38 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
   
   return root
 };
+
+//Same as above but a little cleaner
+function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+  let l = new ListNode();
+  let head = l;
+  let sum = 0;
+  let remainder = 0;
+
+  while (l1 || l2 || sum > 0) {
+    
+    if(l1) {
+      sum = sum + l1.val;
+      l1 = l1.next;
+    }
+    if(l2) {
+      sum = sum + l2.val;
+      l2 = l2.next;
+    }
+    
+    if (sum >= 10){
+      remainder = 1;
+      sum = sum - 10;
+    }
+    
+    l.next = new ListNode(sum);
+    l = l.next;
+    sum = remainder;
+    remainder = 0;
+  }
+
+  return head.next;
+}
 
 
 
