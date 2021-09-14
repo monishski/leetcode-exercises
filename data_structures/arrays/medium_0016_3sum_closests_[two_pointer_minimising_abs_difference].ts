@@ -11,7 +11,7 @@ function threeSumClosest(nums: number[], target: number): number {
       res = Math.abs(sum - target) < Math.abs(res - target) ? sum : res
       if (sum > target) r--;
       else if (sum < target) l++;
-      else {
+      else { //I guess we could break here?
         r--
         l++
       }
