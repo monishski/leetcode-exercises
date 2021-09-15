@@ -7,7 +7,7 @@ class ListNode {
     }
 }
 
-function _removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+function __removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   if (!head) return head
   //We want to keep a distance of 2 nodes 
   let dummy = new ListNode()
@@ -30,7 +30,7 @@ function _removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
 };
 
 //The above works but there is more succint way of writing the while loop
-function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+function _removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   if (!head) return head
   let dummy = new ListNode()
   dummy.next = head
@@ -49,3 +49,13 @@ function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
   left.next = left.next.next
   return dummy.next
 }
+
+//Even cleaner
+function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
+  let fast = head, slow = head
+  for (let i = 0; i < n; i++) fast = fast.next
+  if (!fast) return head.next
+  while (fast.next) fast = fast.next, slow = slow.next
+  slow.next = slow.next.next
+  return head
+};
